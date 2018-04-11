@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<tree>
+  <title>Sheaffer Snorkel Identification</title>
+  <description>A decision tree to identify the model of a Sheaffer Snorkel.</description>
+  <branch id="1">
+    <content>What is the body material?</content>
+    <fork target="1.1">Plastic</fork>
+    <fork target="1.2">Metal</fork>
+  </branch>
+  <branch id="1.1">
+    <content>Is there a white dot?</content>
+    <fork target="1.1.1">Yes</fork>
+    <fork target="1.1.2">No</fork>
+  </branch>
+  <branch id="1.2">
+    <content>Are the body, cap, clip and filling knob all marked 14K or 18K?</content>
+    <fork target="1.2.1">Yes</fork>
+    <fork target="1.2.2">No</fork>
+  </branch>
+  <branch id="1.1.1">
+    <content>What material is the cap?</content>
+    <fork target="1.1.1.1">Plastic</fork>
+    <fork target="1.1.1.2">Metal</fork>
+  </branch>
+  <branch id="1.1.1.1">
+    <content>How wide is the cap band?</content>
+    <fork target="1.1.1.1.1">3/8 inch (9.5mm)</fork>
+    <fork target="1.1.1.1.2">Other</fork>
+  </branch>
+  <branch id="1.1.1.1.1">
+    <content>Is the cap band marked 14K?</content>
+    <fork target="1.1.1.1.1.1">Yes</fork>
+    <fork target="1.1.1.1.1.2">No</fork>
+  </branch>
+  <branch id="1.1.1.1.1.1">
+    <content>Valiant</content>
+  </branch>
+  <branch id="1.1.1.1.1.2">
+    <content>Signature</content>
+  </branch>
+  <branch id="1.1.1.1.2">
+    <content>Clipper</content>
+  </branch>
+  <branch id="1.1.1.2">
+    <content>What nib does the pen have?</content>
+    <fork target="1.1.1.2.1">PgAg</fork>
+    <fork target="1.1.1.2.2">two-tone 14K conical</fork>
+  </branch>
+  <branch id="1.1.1.2.1">
+    <content>Clipper</content>
+  </branch>
+  <branch id="1.1.1.2.2">
+    <content>Is the cap chrome with a gold filled band and clip?</content>
+    <fork target="1.1.1.2.1">Yes</fork>
+    <fork target="1.1.1.2.2">No</fork>
+  </branch>
+  <branch id="1.1.1.2.2.1">
+    <content>Sentinel</content>
+  </branch>
+  <branch id="1.1.1.2.2.2">
+    <content>Crest</content>
+  </branch>
+  <branch id="1.2.1">
+    <content>This appears to be a Masterpiece. Nice find!</content>
+  </branch>
+  <branch id="1.2.2">
+    <content>Is the body gold filled?</content>
+    <fork target="1.2.2.1">Yes</fork>
+    <fork target="1.2.2.2">No</fork>
+  </branch>
+  <branch id="1.2.2.1">
+    <content>Insignia</content>
+  </branch>
+  <branch id="1.2.2.2">
+    <content>Where was it made?</content>
+    <fork target="1.2.2.2.1">USA</fork>
+    <fork target="1.2.2.2.2">Canada</fork>
+  </branch>
+  <branch id="1.2.2.2.1">
+    <content><![CDATA[Triumph - can i put a lot of cool stuff here? Like several sentences
+      that make a full paragraph? What about <em>italics</em>?]]>
+    </content>
+  </branch>
+  <branch id="1.2.2.2.2">
+    <content>Signet</content>
+  </branch>
+  <branch id="1.1.2">
+    <content>What material is the cap?</content>
+    <fork target="1.1.2.1">Plastic</fork>
+    <fork target="1.1.2.2">Metal</fork>
+  </branch>
+  <branch id="1.1.2.1">
+    <content>Sovereign</content>
+  </branch>
+  <branch id="1.1.2.2">
+    <content>What nib does the pen have?</content>
+    <fork target="1.1.2.2.1">PgAg</fork>
+    <fork target="1.1.2.2.2">Gold mono-tone open</fork>
+    <fork target="1.1.2.2.3">Gold two-tone open</fork>
+  </branch>
+  <branch id="1.1.2.2.1">
+    <content>Special</content>
+  </branch>
+  <branch id="1.1.2.2.2">
+    <content>Admiral</content>
+  </branch>
+  <branch id="1.1.2.2.3">
+    <content>Saratoga</content>
+  </branch>
+</tree>

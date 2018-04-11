@@ -1,0 +1,100 @@
+<html>
+<head>
+  <title>Breadcrumb Test</title>
+  <link rel="stylesheet" type="text/css" href="dt.css">
+  <script type="text/javascript" src="treesnorkel.js"></script>
+</head>
+<body>
+  <div id="crumbs"></div>
+  <div id="decision"></div>
+
+  <script>
+    function checkId(branch) {
+      return branch.id == currentId;
+    }
+    function startOver() {
+      branch = treedata.branches[0];
+      currentId = branch.id;
+      nodes = [];
+      answers = [];
+      defineCrumbs();
+      renderDecisionNode();
+    }
+    function defineCrumbs() {
+     var ul = document.createElement('ul');
+     ul.setAttribute('id','crumbList');
+     ul.setAttribute('class','breadcrumb');
+
+     var t, tt;
+
+     var crumbDiv = document.getElementById('crumbs');
+     if (crumbDiv.hasChildNodes()) {
+       crumbDiv.replaceChild(ul, crumbDiv.childNodes[0]);
+     } else {
+       crumbDiv.appendChild(ul);
+     }
+     answers.forEach(renderCrumb);
+
+     function renderCrumb(element, index, arr) {
+         var li = document.createElement('li');
+         li.setAttribute('class','item');
+         ul.appendChild(li);
+         link="<a href=\"javascript:resetTo(" + index + ")\");\">" + element + "</a>";
+         li.innerHTML=li.innerHTML + link;
+     }
+   }
+   function renderDecisionNode() {
+     if (answers.length == 0) {
+       branch = treedata.branches[0];
+     } else {
+       branch = treedata.branches.find(checkId);
+     }
+
+     var tn = document.createTextNode(branch.content);
+     var decisionDiv = document.getElementById('decision');
+
+     if (branch.forks == null) {
+       decisionDiv.setAttribute('class','answer');
+       decisionDiv.innerHTML=branch.content;
+     } else {
+       decisionDiv.setAttribute('class','question');
+       var inner=branch.content;
+       for (var i = 0; i < branch.forks.length; i++) {
+         inner = inner + "<br><a href='javascript:setAnswer(\""
+               + branch.forks[i].target + "\", \""
+               + branch.forks[i].answer + "\");'>"
+               + branch.forks[i].answer + "</a>";
+       }
+       decisionDiv.innerHTML=inner;
+     }
+   }
+   function setAnswer(id, a) {
+	    currentId = id;
+      answers.push(a);
+      branch = treedata.branches.find(checkId);
+      nodes.push(id);
+      renderDecisionNode();
+      defineCrumbs();
+   }
+   function resetTo(index) {
+	    currentId = nodes[index];
+      branch = treedata.branches.find(checkId);
+      n = answers.length - index - 1;
+      for (var i = 0; i < n; i++) {
+        answers.pop();
+        nodes.pop();
+      }
+      renderDecisionNode();
+      defineCrumbs();
+   }
+   nodes = [];
+   answers = [];
+   defineCrumbs();
+   renderDecisionNode();
+  </script>
+
+<a href="javascript:startOver();">Start over</a>
+<br>
+Version 0.1.10 : Add start over.
+</body>
+</html>
